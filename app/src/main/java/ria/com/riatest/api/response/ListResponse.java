@@ -13,7 +13,7 @@ public class ListResponse {
     @SerializedName("pressure")
     private double pressure;
     @SerializedName("humidity")
-    private int humidity;
+    private String humidity;
     @SerializedName("weather")
     private List<WeatherResponse> weather;
 
@@ -41,11 +41,11 @@ public class ListResponse {
         this.pressure = pressure;
     }
 
-    public int getHumidity() {
+    public String getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(String humidity) {
         this.humidity = humidity;
     }
 }

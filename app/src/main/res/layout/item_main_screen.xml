@@ -3,7 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="model"
+            type="ria.com.riatest.model.WeatherModel" />
+
+    </data>
+
     <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -24,6 +33,7 @@
                 android:id="@+id/icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                app:imageUrl="@{model.icon}"
                 tools:src="@mipmap/ic_launcher" />
 
             <LinearLayout
@@ -38,6 +48,7 @@
                     android:id="@+id/date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{model.date}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     tools:text="June 5, 2017" />
 
@@ -45,19 +56,20 @@
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{model.description}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/maxTemperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="@{model.maxTemperature}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     tools:text="30" />
 
@@ -65,10 +77,11 @@
                     android:id="@+id/minTemperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_alignParentBottom="true"
+                    android:text="@{model.minTemperature}"
+                    android:textSize="16sp"
                     tools:text="30" />
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
-
 </layout>

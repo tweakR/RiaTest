@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="max_temp_detailed">80sp</dimen>
+    <dimen name="date_detailed">20sp</dimen>
+    <dimen name="layout_margin">16dp</dimen>
+    <dimen name="min_temp_detailed">40sp</dimen>
+</resources>

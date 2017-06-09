@@ -2,4 +2,7 @@
     <string name="app_name">RiaTest</string>
     <string name="three_days_hint">3 days</string>
     <string name="seven_days_hint">7 days</string>
+    <string name="hint_pressure">Pressure:</string>
+    <string name="hint_humidity">Humidity:</string>
+    <string name="title_weather_details">Details</string>
 </resources>
