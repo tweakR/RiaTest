@@ -10,19 +10,19 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import ria.com.riatest.BR;
 import ria.com.riatest.R;
 import ria.com.riatest.constant.Constant;
 import ria.com.riatest.databinding.ItemMainScreenBinding;
-import ria.com.riatest.model.WeatherModel;
+import ria.com.riatest.db.entities.WeatherData;
 import ria.com.riatest.ui.activity.SelectedActivity;
 import ria.com.riatest.ui.core.view.adapter.BindingHolder;
 import ria.com.riatest.ui.fragment.detailed.view.WeatherDetailedFragment;
+import ria.com.riatest.ui.fragment.mainscreen.bindmodel.WeatherViewModel;
 
 public class MainScreenAdapter extends RecyclerView.Adapter<BindingHolder<ItemMainScreenBinding>> {
 
-    private List<WeatherModel> originalWeatherList;
-    private List<WeatherModel> tempList;
+    private List<WeatherData> originalWeatherList;
+    private List<WeatherData> tempList;
 
     private Context context;
 
@@ -42,11 +42,11 @@ public class MainScreenAdapter extends RecyclerView.Adapter<BindingHolder<ItemMa
 
     @Override
     public void onBindViewHolder(BindingHolder<ItemMainScreenBinding> holder, int position) {
-        holder.binding.setVariable(BR.model, originalWeatherList.get(position));
+        holder.binding.setModel(new WeatherViewModel(originalWeatherList.get(position)));
 
         holder.binding.cardView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putParcelable(Constant.WEATHER, originalWeatherList.get(position));
+            bundle.putParcelable(Constant.WEATHER, new WeatherViewModel(originalWeatherList.get(position)));
             SelectedActivity.startActivityWithFragment(context, WeatherDetailedFragment.class.getName(),
                     bundle, context.getString(R.string.title_weather_details));
         });
@@ -58,13 +58,13 @@ public class MainScreenAdapter extends RecyclerView.Adapter<BindingHolder<ItemMa
         return originalWeatherList.size();
     }
 
-    public void setWeatherList(List<WeatherModel> originalWeatherList) {
+    public void setWeatherList(List<WeatherData> originalWeatherList) {
         this.originalWeatherList = originalWeatherList;
         notifyDataSetChanged();
     }
 
     public void set3DaysWeather() {
-        List<WeatherModel> customWeatherList = new ArrayList<>();
+        List<WeatherData> customWeatherList = new ArrayList<>();
         customWeatherList = copyArray(originalWeatherList);
         for (int i = 3; i <= 6; i++) {
             tempList.add(customWeatherList.get(i));
@@ -75,14 +75,14 @@ public class MainScreenAdapter extends RecyclerView.Adapter<BindingHolder<ItemMa
         setWeatherList(customWeatherList);
     }
 
-    private List<WeatherModel> copyArray(List<WeatherModel> source) {
-        List<WeatherModel> destination = new ArrayList<>();
+    private List<WeatherData> copyArray(List<WeatherData> source) {
+        List<WeatherData> destination = new ArrayList<>();
         destination.addAll(source);
         return destination;
     }
 
     public void set7DaysWeather() {
-        for (WeatherModel item : tempList) {
+        for (WeatherData item : tempList) {
             originalWeatherList.add(item);
         }
         tempList.clear();

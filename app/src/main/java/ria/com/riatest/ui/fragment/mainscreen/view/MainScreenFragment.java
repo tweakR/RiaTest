@@ -10,7 +10,7 @@ import java.util.List;
 import ria.com.riatest.R;
 import ria.com.riatest.RiaApplication;
 import ria.com.riatest.databinding.FragmentMainScreenBinding;
-import ria.com.riatest.model.WeatherModel;
+import ria.com.riatest.db.entities.WeatherData;
 import ria.com.riatest.ui.core.view.CoreFragment;
 import ria.com.riatest.ui.fragment.mainscreen.adapter.MainScreenAdapter;
 import ria.com.riatest.ui.fragment.mainscreen.presenter.MainScreenPresenter;
@@ -39,7 +39,11 @@ public class MainScreenFragment extends CoreFragment<MainScreenPresenter, Fragme
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getPresenter().getWeather("Kiev");
+        if (!checkInternetConnection()) {
+            getPresenter().getFromDb();
+        } else {
+            getPresenter().getWeather("London");
+        }
         getDataBinding().daySwitcher.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             if (isChecked) {
                 adapter.set3DaysWeather();
@@ -50,7 +54,7 @@ public class MainScreenFragment extends CoreFragment<MainScreenPresenter, Fragme
     }
 
     @Override
-    public void setWeatherList(List<WeatherModel> list) {
+    public void setWeatherList(List<WeatherData> list) {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         getDataBinding().list.setLayoutManager(manager);
         getDataBinding().list.setAdapter(adapter);

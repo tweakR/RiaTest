@@ -5,11 +5,13 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ria.com.riatest.di.module.ApiModule;
 import ria.com.riatest.di.module.ApplicationModule;
+import ria.com.riatest.di.module.DataModule;
+import ria.com.riatest.di.module.DbModule;
 import ria.com.riatest.ui.fragment.detailed.view.WeatherDetailedFragment;
 import ria.com.riatest.ui.fragment.mainscreen.view.MainScreenFragment;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, ApiModule.class})
+@Component(modules = {ApplicationModule.class, ApiModule.class, DbModule.class, DataModule.class})
 
 public interface ApplicationComponent {
 

@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="ria.com.riatest.model.WeatherModel" />
+            type="ria.com.riatest.ui.fragment.mainscreen.bindmodel.WeatherViewModel" />
 
     </data>
 
