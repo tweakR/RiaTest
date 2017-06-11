@@ -9,6 +9,6 @@
         android:layout_margin="10dp"
         android:hint="@string/hint_add_city"
         android:imeOptions="actionDone"
-        android:maxLines="1" />
+        android:singleLine="true" />
 
 </LinearLayout>

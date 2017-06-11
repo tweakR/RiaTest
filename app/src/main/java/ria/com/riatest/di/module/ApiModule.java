@@ -27,14 +27,14 @@ public class ApiModule {
     @Provides
     @Singleton
     @Named("api")
-    public Gson provideGson() {
+    Gson provideGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         return gsonBuilder.create();
     }
 
     @Provides
     @Singleton
-    public OkHttpClient provideOkHttpClient() {
+    OkHttpClient provideOkHttpClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -46,7 +46,7 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public RestApi provideRestApi(@Named("api") Gson gson, OkHttpClient okHttpClient) {
+    RestApi provideRestApi(@Named("api") Gson gson, OkHttpClient okHttpClient) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))

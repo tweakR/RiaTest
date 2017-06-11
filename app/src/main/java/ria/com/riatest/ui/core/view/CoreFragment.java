@@ -19,7 +19,6 @@ import ria.com.riatest.ui.core.presenter.CorePresenter;
 
 
 public abstract class CoreFragment<P extends CorePresenter, B extends ViewDataBinding> extends Fragment implements CoreView {
-    private static final int PERMISSION_REQUEST_CODE = 9000;
     @Inject
     P presenter;
     private B binding;

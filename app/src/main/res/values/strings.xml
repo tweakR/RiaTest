@@ -6,5 +6,6 @@
     <string name="hint_humidity">Humidity:</string>
     <string name="title_weather_details">Details</string>
     <string name="hint_add_city">Add your city here</string>
+    <string name="dialog_title_add_city">Add your city</string>
 
 </resources>

@@ -23,7 +23,7 @@ public class DbModule {
 
     @Provides
     @Singleton
-    public DbManager provideDataBase(Context context) {
+    DbManager provideDataBase(Context context) {
         try {
             SingleEntityStore<Persistable> dataStore;
             DatabaseSource databaseSource = new DatabaseSource(context, Models.DEFAULT, Constant.DB_NAME, 1);

@@ -111,7 +111,7 @@ public class MainScreenFragment extends CoreFragment<MainScreenPresenter, Fragme
         EditText editText = (EditText) dialogView.findViewById(R.id.et_add_city);
 
         new AlertDialog.Builder(getContext())
-                .setTitle("Add your city")
+                .setTitle(R.string.dialog_title_add_city)
                 .setView(dialogView)
                 .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
                     String city = editText.getText().toString();
