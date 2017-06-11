@@ -15,7 +15,6 @@ import ria.com.riatest.ui.core.activity.BaseActivity;
 public class SelectedActivity extends BaseActivity<SelectedActivityBinding> {
 
     public static final String TITLE = "title";
-    public static final String SUBTITLE = "subtitle";
     private static final String FRAGMENT_NAME = "fragment_name";
 
     public static void startActivityWithFragment(Context context, String fragmentName, Bundle bundle, String title) {
@@ -48,10 +47,8 @@ public class SelectedActivity extends BaseActivity<SelectedActivityBinding> {
 
         String fragmentName = extras.getString(FRAGMENT_NAME);
         String title = extras.getString(TITLE);
-        String subTitle = extras.getString(SUBTITLE);
 
         getSupportActionBar().setTitle(title);
-        getSupportActionBar().setSubtitle(subTitle);
 
         Fragment fragment = Fragment.instantiate(this, fragmentName, extras);
 

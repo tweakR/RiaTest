@@ -1,11 +1,13 @@
 package ria.com.riatest.db;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
 import io.requery.Persistable;
 import io.requery.rx.SingleEntityStore;
+import ria.com.riatest.db.entities.CityData;
 import ria.com.riatest.db.entities.WeatherData;
 import rx.Observable;
 
@@ -40,4 +42,15 @@ public class DbManager implements DbCalls {
     public Observable<Boolean> saveWeatherData(List<WeatherData> data) throws Exception {
         return Observable.combineLatest(clearDataBase(), dataStore.insert(data).toObservable(), (t1, t2) -> true);
     }
+
+    @Override
+    public Observable<List<CityData>> getCityName() {
+        return Observable.just(dataStore.select(CityData.class).get().toList());
+    }
+
+    @Override
+    public Observable<Iterable<CityData>> saveCityName(Set<CityData> cityData) throws Exception {
+        return dataStore.insert(cityData).toObservable();
+    }
+
 }

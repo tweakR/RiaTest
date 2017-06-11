@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">RiaTest</string>
-    <string name="three_days_hint">3 days</string>
-    <string name="seven_days_hint">7 days</string>
+    <string name="three_days_hint">3 days weather</string>
+    <string name="seven_days_hint">7 days weather</string>
     <string name="hint_pressure">Pressure:</string>
     <string name="hint_humidity">Humidity:</string>
     <string name="title_weather_details">Details</string>
+    <string name="hint_add_city">Add your city here</string>
+
 </resources>

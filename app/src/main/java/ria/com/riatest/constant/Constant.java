@@ -8,4 +8,5 @@ public class Constant {
     // bundle keys
     public static final String WEATHER = "weather";
 
+    public static final String DB_NAME = "forecast";
 }
